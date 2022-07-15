@@ -1,18 +1,6 @@
-function sieve(num)
-    prime = [true for i in 1:num+1]
-    p=2
-    while p^2 <= num
-        if prime[p]
-            for i in p^2:p:num+1
-                prime[i] = false
-            end
-        end
-        p+=1
-    end
-    prime[1:end-1]
-end
+include("../euler_utilities.jl")
 
-index_prime = sieve(10^6)
+index_prime = prime_sieve_lookup(10^6)
 
 function iscircular(x)
     str_x = string(x)
