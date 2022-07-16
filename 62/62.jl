@@ -1,12 +1,4 @@
-
-function count_digits(x)
-    result = zeros(Int8, 10)
-    for i in string(x)
-        result[parse(Int8, i)+1] += 1
-    end
-    result
-end
-
+include("../euler_utilities.jl")
 
 function solve(limit, goal_perms)
     current_buffer = []

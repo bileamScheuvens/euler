@@ -1,3 +1,11 @@
+function count_digits(x)
+    result = zeros(Int8, 10)
+    for i in string(x)
+        result[parse(Int8, i)+1] += 1
+    end
+    result
+end
+
 function prime_sieve_lookup(num)
     prime = [true for i in 1:num+1]
     p=2
@@ -13,5 +21,6 @@ function prime_sieve_lookup(num)
 end
 prime_sieve(num) = filter(x->x!=0, collect(1:num) .* prime_sieve_lookup(num))
 
+export count_digits
 export prime_sieve_lookup
 export prime_sieve
