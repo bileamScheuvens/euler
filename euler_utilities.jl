@@ -22,7 +22,10 @@ end
 prime_sieve(num) = filter(x->x!=0, collect(1:num) .* prime_sieve_lookup(num))
 
 function prime_factor(x::Int)
-    candidates = prime_sieve(Int(sqrt(x)÷1))
+    if x == 1
+        return [1]
+    end
+    candidates = prime_sieve(Int(sqrt(x)÷1+1))
     factors = []
     factoring = true
     while factoring
