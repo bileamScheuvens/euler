@@ -21,6 +21,30 @@ function prime_sieve_lookup(num)
 end
 prime_sieve(num) = filter(x->x!=0, collect(1:num) .* prime_sieve_lookup(num))
 
+function prime_factor(x::Int)
+    candidates = prime_sieve(Int(sqrt(x)÷1))
+    factors = []
+    factoring = true
+    while factoring
+        for c in candidates
+            if x % c == 0
+                x = Int(x/c)
+                push!(factors, c)
+                break
+            elseif c == candidates[end]
+                x == 1 ? nothing : push!(factors, x)
+                factoring = false
+            end
+        end
+    end
+    factors
+end
+radical(x) = prod(unique(prime_factor(x)))
+
 export count_digits
+
 export prime_sieve_lookup
 export prime_sieve
+
+export prime_factor
+export radical
