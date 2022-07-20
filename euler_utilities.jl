@@ -44,6 +44,10 @@ function prime_factor(x::Int)
 end
 radical(x) = prod(unique(prime_factor(x)))
 
+is_palindrome(x::String) = x == reverse(x)
+is_palindrome(x::Int) = is_palindrome(string(x))
+is_palindrome(x::BigInt) = is_palindrome(string(x))
+
 export count_digits
 
 export prime_sieve_lookup
@@ -51,3 +55,5 @@ export prime_sieve
 
 export prime_factor
 export radical
+
+export is_palindrome
