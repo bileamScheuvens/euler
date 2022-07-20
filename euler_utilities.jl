@@ -48,6 +48,12 @@ is_palindrome(x::String) = x == reverse(x)
 is_palindrome(x::Int) = is_palindrome(string(x))
 is_palindrome(x::BigInt) = is_palindrome(string(x))
 
+letter_to_int(x::Char) = (Int(x)-64)%32
+
+read_matrix(filepath) = open(filepath) do f
+    readlines(f)
+end |> x->split.(x, ",") |> x->permutedims(hcat(x...)) |> x->parse.(Int, x)
+
 export count_digits
 
 export prime_sieve_lookup
@@ -57,3 +63,7 @@ export prime_factor
 export radical
 
 export is_palindrome
+
+export letter_to_int
+
+export read_matrix
